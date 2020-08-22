@@ -20,10 +20,10 @@ public class TaskRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        final String queryString = "SELECT latitude, longitude FROM tomtom_usa WHERE tile = :tile";
+        final String queryString = "SELECT latitude, longitude FROM <table_name> WHERE state = :state";
         final Query nativeQuery = entityManager.createNativeQuery(queryString);
 
-        nativeQuery.setParameter("tile", "a44b8a2");
+        nativeQuery.setParameter("state", "Madhya Pradesh");
         nativeQuery.setMaxResults(1);
 
         final List<Object[]> results = nativeQuery.getResultList();
